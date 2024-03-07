@@ -18,7 +18,7 @@ def dodajBut():
     dataaa = {
         strona: {
         'email': mail,
-        'password': password
+        'haslo': password
         }
     }
     if pasEnt.get() == '' or webEnt == '':
@@ -42,6 +42,18 @@ def dodajBut():
         finally:
                 webEnt.delete(0, 'end')
                 pasEnt.delete(0, 'end')
+
+def strona():
+    try:
+        with open('data.json') as plik:
+            data = json.load(plik)
+            aaa = 'email'
+            bbb = 'haslo'
+            messagebox.showinfo(title=webEnt.get(),message=f'Email: {data[webEnt.get()][aaa]}\nHasło: {data[webEnt.get()][bbb]}')
+    except KeyError:
+        messagebox.showinfo(title='Brak rejestru', message='Nie ma takiego wpisu w rejestrze')
+    except FileNotFoundError:
+        messagebox.showinfo(title='Brak pliku', message='Nie istnieje plik do przeszukania')
 
 
 
@@ -76,7 +88,7 @@ pasEnt.grid(row=3, column=1)
 genPass = tk.Button(text='Generuj Hasło', command=main.hasloo)
 genPass.grid(row=3, column= 2)
 
-search = tk.Button(text='Szukaj', width=11)
+search = tk.Button(text='Szukaj', width=11, command=strona)
 search.grid(row=1, column=2)
 
 addButt = tk.Button(text='Dodaj', width=40, command=dodajBut)

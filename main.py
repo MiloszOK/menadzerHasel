@@ -22,5 +22,3 @@ def hasloo():
   password = "".join(password_list)
   gui.pasEnt.insert(0, password)
   pyperclip.copy(password)
-
-  print(f"Your password is: {password}")
