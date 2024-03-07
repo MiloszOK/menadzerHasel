@@ -4,6 +4,7 @@ import main
 import json
 
 
+
 window = tk.Tk()
 window.title('Menadżer Haseł')
 window.config(padx=20, pady=20)
